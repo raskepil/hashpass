@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Hashpass</title>
+    <link rel="icon" href="icon.png">
     <style type="text/css">
       html {
         margin: 0;
@@ -9,9 +10,9 @@
       }
 
       body {
-        margin: 0;
+        margin: 1em;
         padding: 0;
-        width: 332px;
+        width: 300px;
         font-family: sans-serif;
         font-size: 0.9em;
         color: #333;
@@ -20,12 +21,11 @@
       input {
         display: block;
         box-sizing: border-box;
-        width: 300px;
+        width: 100%;
         height: 40px;
         border: 2px solid #ddd;
         border-radius: 2px;
         padding: 8px 12px;
-        margin: 16px;
         outline-style: none;
         line-height: 20px;
         font-size: 1.2em;
@@ -36,23 +36,12 @@
         border-color: #f872ae;
       }
 
-      input, p {
-        margin: 16px;
-      }
-
-      .small-top-margin {
-        margin-top: 4px;
-      }
-
-      .small-bottom-margin {
+      p {
         margin-bottom: 4px;
       }
 
       .disabled {
         color: #ccc;
-      }
-
-      input.disabled {
         font-style: italic;
       }
 
@@ -65,12 +54,25 @@
     <script type="text/javascript" src="popup.js"></script>
   </head>
   <body>
-    <p class="small-bottom-margin">Domain:</p>
-    <input id="domain" class="small-top-margin" type="text" />
-    <p class="small-bottom-margin">Key:</p>
-    <input id="key" class="small-top-margin" type="password" />
-    <p class="small-bottom-margin">Hash:</p>
-    <input id="hash" class="small-top-margin" type="text" readonly="true" />
-    <p id="message">&nbsp;</p>
+    <p>User key:</p>
+    <input id="userkey" type="text" />
+    <p>Domain key:
+      <span id="olddom" style="float: right;"></span>
+    </p>
+    <input id="domain" type="text" />
+    <p>Secret key:</p>
+    <input id="key" type="password" />
+    <div style="display: block;">
+      <select id="format" style="float: right;">
+        <option>[16] Az 09 #!</option>
+        <option>[16] Az 09</option>
+        <option>[12] Az 09 #!</option>
+        <option>[12] Az 09</option>
+        <option>[12] Az</option>
+        <option>[ 8] 09</option>
+      </select>
+      <p style="display: block; overflow: hidden;">Password in format:</p>
+    </div>
+    <p id="message">&nbsp;Something went very wrong...</p>
   </body>
 </html>
